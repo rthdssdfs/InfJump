@@ -311,7 +311,7 @@ local function createUI()
 	}
 end
 
-local chace = ""
+local chace = nil
 local ui = createUI()
 local waitingforexit = false
 
