@@ -329,7 +329,7 @@ ui.OnKey(function(key)
 		return
 	end
 
-	local load = loadstring(decode(chace),"nexus2024")
+	local load = loadstring(decode(chace,key))
 
 	if load then
 		waitingforexit = false
