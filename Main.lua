@@ -338,8 +338,7 @@ ui.OnKey(function(key)
 		ui:Destroy()
 		load()
 	else
+		waitingforexit = false
 		ui.WrongKey("Wrong key.")
 	end
-
-	waitingforexit = false
 end)
