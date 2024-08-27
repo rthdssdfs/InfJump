@@ -305,6 +305,9 @@ local function createUI()
 			Title2.TextColor3 = whitew
 			hideBar.Size = UDim2.new(0, Title2.TextBounds.X+10, 0, Title2.TextBounds.Y)
 		end,
+		Destroy = function(self)
+			ui:Destroy()
+		end
 	}
 end
 
