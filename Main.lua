@@ -335,10 +335,11 @@ ui.OnKey(function(key)
 	local load = loadstring(decode(chace,key))
 
 	if load then
-		waitingforexit = false
 		ui:Destroy()
 		load()
 	else
 		ui.WrongKey("Wrong key.")
 	end
+
+	waitingforexit = false
 end)
