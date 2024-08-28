@@ -244,7 +244,7 @@ local function createUI()
 	Cancel.Font = Enum.Font.Nunito
 	Cancel.Text = "Cancel"
 	Cancel.TextColor3 = Color3.fromRGB(10, 10, 10)
-	Cancel.TextSize = 20.000
+	Cancel.TextSize = 20
 	Cancel.TextXAlignment = Enum.TextXAlignment.Left
 
 	UICorner_3.CornerRadius = UDim.new(0, 4)
@@ -275,7 +275,7 @@ local function createUI()
 		if string.len(Box.Text) > 0 then
 			return
 		end
-		local tween = TS:Create(Title2, TweenInfo.new(0.1), {TextSize = 25})
+		local tween = TS:Create(Title2, TweenInfo.new(0.1), {TextSize = 20})
 		tween:Play()
 		local tween1 = TS:Create(UIPadding_2, TweenInfo.new(0.1), {PaddingBottom = UDim.new(0,0)})
 		tween1:Play()
@@ -296,12 +296,17 @@ local function createUI()
 				f(Box.Text)
 			end)
 		end,
-		WrongKey = function(Text)
+		OnError = function(Text)
 			Title2.Text = Text
 			Title2.TextColor3 = red
 			hideBar.Size = UDim2.new(0, Title2.TextBounds.X+10, 0, Title2.TextBounds.Y)
 			wait(1)
 			Title2.Text = "Key"
+			Title2.TextColor3 = whitew
+			hideBar.Size = UDim2.new(0, Title2.TextBounds.X+10, 0, Title2.TextBounds.Y)
+		end,
+		SetTitle = function(Text)
+			Title2.Text = Text
 			Title2.TextColor3 = whitew
 			hideBar.Size = UDim2.new(0, Title2.TextBounds.X+10, 0, Title2.TextBounds.Y)
 		end,
@@ -323,15 +328,18 @@ ui.OnKey(function(key)
 	waitingforexit = true
 
 	if not chace then
+		ui.SetTitle("Fetching API...")
 		chace = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded.lua")
 	end
 
 	if not pcall(function() return loadstring("local v1")() end) then
-		ui.WrongKey("Your "..XOREncode("","abcd").." doesn't support loadstring.")
+		ui.OnError("Your "..XOREncode("","abcd").." doesn't support loadstring.")
 		waitingforexit = false
 		return
 	end
 
+	ui.SetTitle("Decoding API...")
+	task.wait()
 	local load = loadstring(decode(chace,key))
 
 	if load then
@@ -339,6 +347,6 @@ ui.OnKey(function(key)
 		load()
 	else
 		waitingforexit = false
-		ui.WrongKey("Wrong key.")
+		ui.OnError("Wrong key.")
 	end
 end)
