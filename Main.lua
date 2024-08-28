@@ -339,7 +339,7 @@ ui.OnKey(function(key)
 	end
 
 	ui.SetTitle("Decoding API...")
-	task.wait()
+	task.wait(0.5)
 	local load = loadstring(decode(chace,key))
 
 	if load then
