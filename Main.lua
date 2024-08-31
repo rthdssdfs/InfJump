@@ -299,10 +299,12 @@ local function createUI()
 		OnError = function(Text)
 			Title2.Text = Text
 			Title2.TextColor3 = red
+			UIStroke.Color = red
 			hideBar.Size = UDim2.new(0, Title2.TextBounds.X+10, 0, Title2.TextBounds.Y)
 			wait(1)
 			Title2.Text = "Key"
 			Title2.TextColor3 = whitew
+			UIStroke.Color = lastw
 			hideBar.Size = UDim2.new(0, Title2.TextBounds.X+10, 0, Title2.TextBounds.Y)
 		end,
 		SetTitle = function(Text)
