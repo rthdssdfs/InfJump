@@ -128,7 +128,7 @@ local function createUI()
 	title.Text = nameH.."HUB FE "..devicetype
 	title.BackgroundColor3 = black
 	title.TextColor3 = lastw
-	title.Size = UDim2.new(1, 0, 0, aeroY - 4)
+	title.Size = UDim2.new(1, -4, 0, aeroY - 4)
 	title.Position = UDim2.new(0, 4, 0, 4)
 	title.TextSize = 20
 	title.TextXAlignment = Enum.TextXAlignment.Left
