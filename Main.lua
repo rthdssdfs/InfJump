@@ -1,3 +1,6 @@
+local version_ = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Version.lua")
+version_ = game:GetService("HttpService"):JSONDecode(version_)
+
 local function bit32bxor(a, b)
 	local result = 0
 	local shift = 1
@@ -125,7 +128,7 @@ local function createUI()
 	local title = Instance.new("TextLabel", mainframe);
 
 	local uiPadding43 = Instance.new("UIPadding", title)
-	title.Text = nameH.."HUB FE "..devicetype
+	title.Text = version_.Version..nameH.."HUB FE "..devicetype
 	title.BackgroundColor3 = black
 	title.TextColor3 = lastw
 	title.Size = UDim2.new(1, -4, 0, aeroY - 4)
