@@ -332,10 +332,8 @@ ui.OnKey(function(key)
 
 	waitingforexit = true
 
-	if not chace then
-		ui.SetTitle("Fetching API...")
-		chace = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded.lua")
-	end
+	ui.SetTitle("Fetching API...")
+	chace = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded.lua", true)
 
 	if not pcall(function() return loadstring("local v1")() end) then
 		ui.OnError("Your "..XOREncode("","abcd").." doesn't support loadstring.")
