@@ -1,4 +1,4 @@
-local version_ = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Version.lua")
+local version_ = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Version.lua", true)
 version_ = game:GetService("HttpService"):JSONDecode(version_)
 
 local function bit32bxor(a, b)
