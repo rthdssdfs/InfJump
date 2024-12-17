@@ -37,9 +37,9 @@ local function decode(encodedData, key)
 end
 
 local chace = nil
-local keychace = isfile and isfile("keychace") and readfile("keychace")
+local a, keychace = pcall(function() return readfile("keychace") end)
 
-if keychace then
+if a then
 	chace = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded.lua")
 	local load = loadstring(decode(chace,keychace))
 	if load then
