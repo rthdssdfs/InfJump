@@ -1,6 +1,3 @@
-local version_ = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Version.lua", true)
-version_ = game:GetService("HttpService"):JSONDecode(version_)
-
 local function bit32bxor(a, b)
 	local result = 0
 	local shift = 1
@@ -38,6 +35,20 @@ local function decode(encodedData, key)
 	local decodedHex = fromHex(encodedData)
 	return XOREncode(decodedHex, key)
 end
+
+local chace = nil
+local keychace = readfile and readfile("keychace")
+
+if keychace then
+	chace = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded.lua")
+	local load = loadstring(decode(chace,keychace))
+	if load then
+		load()
+	end
+end
+
+local version_ = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Version.lua")
+version_ = game:GetService("HttpService"):JSONDecode(version_)
 
 local function createUI()
 	local nameH = "Nexus"
@@ -321,7 +332,6 @@ local function createUI()
 	}
 end
 
-local chace = nil
 local ui = createUI()
 local waitingforexit = false
 
@@ -332,8 +342,10 @@ ui.OnKey(function(key)
 
 	waitingforexit = true
 
-	ui.SetTitle("Fetching API...")
-	chace = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded.lua", true)
+	if not chace then
+		ui.SetTitle("Fetching API...")
+		chace = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded.lua")
+	end
 
 	if not pcall(function() return loadstring("local v1")() end) then
 		ui.OnError("Your "..XOREncode("","abcd").." doesn't support loadstring.")
@@ -346,6 +358,9 @@ ui.OnKey(function(key)
 	local load = loadstring(decode(chace,key))
 
 	if load then
+		if writefile then
+			writefile("keychace", key)
+		end
 		ui:Destroy()
 		load()
 	else
