@@ -40,7 +40,7 @@ local chace = nil
 local a, keychace = pcall(function() return readfile("keychace") end)
 
 if a then
-	chace = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded.lua")
+	chace = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded.lua", true)
 	local load = loadstring(decode(chace,keychace))
 	if load then
 		load()
@@ -48,7 +48,7 @@ if a then
 	end
 end
 
-local version_ = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Version.lua")
+local version_ = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Version.lua", true)
 version_ = game:GetService("HttpService"):JSONDecode(version_)
 
 local function createUI()
