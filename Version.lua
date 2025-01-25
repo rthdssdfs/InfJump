@@ -1,1 +1,1 @@
-{ "Version" : "beta0.617 " }
+{ "Version" : "beta0.618 " }
