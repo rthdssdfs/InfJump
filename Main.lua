@@ -1,5 +1,5 @@
 if getgenv then
-	if getgenv().loading3 then
+	if getgenv().loading3 or getgenv().loaded3 then
 		return
 	end
 	getgenv().loading3 = true
