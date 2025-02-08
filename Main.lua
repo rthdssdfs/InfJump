@@ -1,3 +1,7 @@
+if getgenv then
+	getgenv().loading3 = true
+end
+
 local function bit32bxor(a, b)
 	local result = 0
 	local shift = 1
@@ -369,3 +373,7 @@ ui.OnKey(function(key)
 		ui.OnError("Wrong key.")
 	end
 end)
+
+if getgenv then
+	getgenv().loading3 = nil
+end
