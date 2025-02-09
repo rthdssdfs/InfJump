@@ -375,8 +375,8 @@ ui.OnKey(function(key)
 		waitingforexit = false
 		ui.OnError("Wrong key.")
 	end
-end)
 
-if getgenv then
-	getgenv().loading3 = nil
-end
+	if getgenv then
+		getgenv().loading3 = nil
+	end
+end)
