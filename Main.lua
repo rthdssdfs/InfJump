@@ -43,12 +43,12 @@ local function decode(encodedData, key)
 	return XOREncode(decodedHex, key)
 end
 
-local chace = nil
-local a, keychace = pcall(function() return readfile("keychace") end)
+local cache = nil
+local a, keycache = pcall(function() return readfile("keycache") end)
 
 if a then
-	chace = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded.lua", true)
-	local load = loadstring(decode(chace,keychace))
+	cache = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded.lua", true)
+	local load = loadstring(decode(cache,keycache))
 	if load then
 		load()
 		return
@@ -350,9 +350,9 @@ ui.OnKey(function(key)
 
 	waitingforexit = true
 
-	if not chace then
+	if not cache then
 		ui.SetTitle("Fetching API...")
-		chace = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded.lua")
+		cache = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded.lua")
 	end
 
 	if not pcall(function() return loadstring("local v1")() end) then
@@ -363,11 +363,11 @@ ui.OnKey(function(key)
 
 	ui.SetTitle("Decoding API...")
 	task.wait(0.5)
-	local load = loadstring(decode(chace,key))
+	local load = loadstring(decode(cache,key))
 
 	if load then
 		if writefile then
-			writefile("keychace", key)
+			writefile("keycache", key)
 		end
 		ui:Destroy()
 		load()
