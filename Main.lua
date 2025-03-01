@@ -5,29 +5,12 @@ if getgenv then
 	getgenv().loading3 = true
 end
 
-local function bit32bxor(a, b)
-	local result = 0
-	local shift = 1
-
-	while a > 0 or b > 0 do
-		local bitA = a % 2
-		local bitB = b % 2
-		local xorBit = (bitA + bitB) % 2
-		result = result + xorBit * shift
-		a = math.floor(a / 2)
-		b = math.floor(b / 2)
-		shift = shift * 2
-	end
-
-	return result
-end
-
 function XOREncode(code, key)
 	local encoded = {}
 	for i = 1, #code do
 		local m = string.byte(code, i)
 		local a = string.byte(key, (i - 1) % #key + 1)
-		table.insert(encoded, string.char(bit32bxor(m, a)))
+		table.insert(encoded, string.char(bit32.bxor(m, a)))
 	end
 	return table.concat(encoded)
 end
