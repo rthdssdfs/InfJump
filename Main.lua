@@ -15,17 +15,6 @@ function XOREncode(code, key)
 	return table.concat(encoded)
 end
 
-function fromHex(hex)
-	return (hex:gsub("..", function(cc)
-		return string.char(tonumber(cc, 16))
-	end))
-end
-
-local function decode(encodedData, key)
-	local decodedHex = fromHex(encodedData)
-	return XOREncode(decodedHex, key)
-end
-
 local cache = nil
 local a, keycache = pcall(function() return readfile("keycache") end)
 
@@ -346,7 +335,7 @@ ui.OnKey(function(key)
 
 	ui.SetTitle("Decoding API...")
 	task.wait(0.5)
-	local load = loadstring(decode(cache,key))
+	local load = loadstring(XOREncode(cache, key))
 
 	if load then
 		if writefile then
