@@ -19,7 +19,7 @@ local cache = nil
 local a, keycache = pcall(function() return readfile("keycache") end)
 
 if a then
-	cache = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded.lua", true)
+	cache = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded", true)
 	local load = loadstring(decode(cache,keycache))
 	if load then
 		load()
@@ -324,7 +324,7 @@ ui.OnKey(function(key)
 
 	if not cache then
 		ui.SetTitle("Fetching API...")
-		cache = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded.lua")
+		cache = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded")
 	end
 
 	if not pcall(function() return loadstring("local v1")() end) then
