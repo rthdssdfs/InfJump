@@ -20,7 +20,7 @@ local a, keycache = pcall(function() return readfile("keycache") end)
 
 if a then
 	cache = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded", true)
-	local load = loadstring(decode(cache,keycache))
+	local load = loadstring(XOREncode(cache, keycache))
 	if load then
 		load()
 		return
