@@ -323,8 +323,11 @@ ui.OnKey(function(key)
 	waitingforexit = true
 
 	if not cache then
-		ui.SetTitle("Fetching API...")
+		ui.SetTitle("Fetching Script...")
 		cache = game:HttpGet("https://raw.githubusercontent.com/rthdssdfs/InfJump/main/Encoded")
+	end
+	if not cache then
+		ui.OnError("Failed to Fetch Script")
 	end
 
 	if not pcall(function() return loadstring("local v1")() end) then
