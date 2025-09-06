@@ -307,6 +307,7 @@ local function createUI()
 			hideBar.Size = UDim2.new(0, Title2.TextBounds.X+10, 0, Title2.TextBounds.Y)
 		end,
 		Destroy = function(self)
+			getgenv().loading3 = nil
 			ui:Destroy()
 		end
 	}
